@@ -1,0 +1,29 @@
+### Create a To-Do:
+POST http://localhost:3000/api/todos
+Content-Type: application/json
+
+{
+    "title": "Learn TypeScript"
+}
+
+
+### Get All To-Dos:
+GET http://localhost:3000/api/todos
+
+
+### Get a Single To-Do:
+GET http://localhost:3000/api/todos/4
+
+
+### Update a To-Do:
+PUT http://localhost:3000/api/todos/1
+Content-Type: application/json
+
+{
+    "title": "Learn TypeScript",
+    "completed": true
+}
+
+
+### Delete a To-Do:
+DELETE http://localhost:3000/api/todos/1
