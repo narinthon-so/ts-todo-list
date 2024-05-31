@@ -61,11 +61,11 @@ jobs:
           USER_NAME: ${{ secrets.SSH_USER_NAME }}
         run: |
           echo "$PRIVATE_KEY" > private_key && chmod 600 private_key
-          ssh -o StrictHostKeyChecking=no -i private_key ${SSH_USER_NAME}@${HOSTNAME} '
+          ssh -o StrictHostKeyChecking=no -i private_key ${SSH_USER_NAME}@${HOSTNAME}" "
             cd /home/ubuntu &&
             sudo docker pull narinthonso/todo-list-be:latest
             sudo docker stop todo-list-be
             sudo docker rm todo-list-be
             sudo docker image prune -f
             sudo docker run -d -p 3000:3000 --name todo-list-be narinthonso/todo-list-be:latest
-
+          "
