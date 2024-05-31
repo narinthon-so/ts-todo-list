@@ -32,4 +32,4 @@ DELETE http://localhost:3000/api/todos/1
 
 
 ### Ping
-POST http://13.250.106.29:3000/api/ping
+POST http://13.250.106.29:3000/api/todos/ping
