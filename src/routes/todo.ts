@@ -61,4 +61,9 @@ router.delete("/:id", (req: Request, res: Response) => {
   }
 });
 
+// Ping
+router.put("/ping", (req: Request, res: Response) => {
+  res.json("pong");
+});
+
 export default router;
