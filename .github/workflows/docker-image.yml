@@ -46,5 +46,26 @@ jobs:
         push: true
         tags: narinthonso/todo-list-be:latest
 
-    - name: Logout from Docker Hub
-      run: docker logout
+
+  deploy-aws-ec2:
+    needs: build-and-push
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Deploy to AWS EC2
+        env:
+          PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+          HOSTNAME: ${{ secrets.SSH_HOST }}
+          USER_NAME: ${{ secrets.USER_NAME }}
+        run: |
+          echo "$PRIVATE_KEY" > private_key && chmod 600 private_key
+          ssh -o StrictHostKeyChecking=no -i private_key ${USER_NAME}@${HOSTNAME} '
+            cd /home/ubuntu &&
+            sudo docker pull narinthonso/todo-list-be:latest
+            sudo docker stop todo-list-be
+            sudo docker rm todo-list-be
+            sudo docker image prune -f
+            sudo docker run -d -p 3000:3000 --name todo-list-be narinthonso/todo-list-be:latest
+
