@@ -61,6 +61,12 @@ router.delete("/:id", (req: Request, res: Response) => {
   }
 });
 
+// Clear
+router.post("/clear", (req: Request, res: Response) => {
+  todos = [];
+  res.json("Removed all todo");
+});
+
 // Ping
 router.post("/ping", (req: Request, res: Response) => {
   res.json("pong");
