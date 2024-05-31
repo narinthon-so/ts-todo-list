@@ -1,14 +1,16 @@
 ### Create a To-Do:
-POST http://localhost:3000/api/todos
+# POST http://localhost:3000/api/todos
+POST http://13.250.106.29:3000/api/todos
 Content-Type: application/json
 
 {
-    "title": "Learn TypeScript"
+    "title": "Learn TypeScript 4"
 }
 
 
 ### Get All To-Dos:
-GET http://localhost:3000/api/todos
+# GET http://localhost:3000/api/todos
+GET http://13.250.106.29:3000/api/todos
 
 
 ### Get a Single To-Do:
